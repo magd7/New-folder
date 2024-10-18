@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background</title>
+    <style>
+        body {
+            transition: background-color 0.5s ease;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;">
+        <h1>Change Background Color</h1>
+        <button id="change-bg-btn">Change Background</button>
+    </div>
+
+    <script>
+        document.getElementById('change-bg-btn').addEventListener('click', () => {
+            fetch('/api/change-bg')
+                .then(response => response.json())
+                .then(data => {
+                    document.body.style.backgroundColor = data.backgroundColor;
+                });
+        });
+    </script>
+</body>
+</html>
